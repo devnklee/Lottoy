@@ -13,6 +13,7 @@
 		22ED506320BFE1BF00FF4FF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22ED506120BFE1BF00FF4FF1 /* Main.storyboard */; };
 		22ED506520BFE1C100FF4FF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22ED506420BFE1C100FF4FF1 /* Assets.xcassets */; };
 		22ED506820BFE1C100FF4FF1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22ED506620BFE1C100FF4FF1 /* LaunchScreen.storyboard */; };
+		25A5D8365591E5D3A83A3BC9 /* Pods_Lottoy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66115B8A10227FDC6F64B84 /* Pods_Lottoy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		22ED506420BFE1C100FF4FF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22ED506720BFE1C100FF4FF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22ED506920BFE1C100FF4FF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50FD849023AA35B50D983403 /* Pods-Lottoy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottoy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lottoy/Pods-Lottoy.debug.xcconfig"; sourceTree = "<group>"; };
+		B66115B8A10227FDC6F64B84 /* Pods_Lottoy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lottoy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE81642F866938506A66388 /* Pods-Lottoy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lottoy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lottoy/Pods-Lottoy.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,12 +35,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A5D8365591E5D3A83A3BC9 /* Pods_Lottoy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		012B73C3CFE7AC077EA7E05C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B66115B8A10227FDC6F64B84 /* Pods_Lottoy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		227222FA20BFFE9600DD2D0A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +64,8 @@
 			children = (
 				22ED505C20BFE1BF00FF4FF1 /* Lottoy */,
 				22ED505B20BFE1BF00FF4FF1 /* Products */,
+				C57AD18B820982D69CBE31E3 /* Pods */,
+				012B73C3CFE7AC077EA7E05C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +90,15 @@
 			path = Lottoy;
 			sourceTree = "<group>";
 		};
+		C57AD18B820982D69CBE31E3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				50FD849023AA35B50D983403 /* Pods-Lottoy.debug.xcconfig */,
+				FFE81642F866938506A66388 /* Pods-Lottoy.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22ED506C20BFE1C100FF4FF1 /* Build configuration list for PBXNativeTarget "Lottoy" */;
 			buildPhases = (
+				15E9D50A3FFF42425ACDCA3F /* [CP] Check Pods Manifest.lock */,
 				22ED505620BFE1BF00FF4FF1 /* Sources */,
 				22ED505720BFE1BF00FF4FF1 /* Frameworks */,
 				22ED505820BFE1BF00FF4FF1 /* Resources */,
+				C5CCF4D9C4EC250E815F3F55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +166,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15E9D50A3FFF42425ACDCA3F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Lottoy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5CCF4D9C4EC250E815F3F55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Lottoy/Pods-Lottoy-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lottoy/Pods-Lottoy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22ED505620BFE1BF00FF4FF1 /* Sources */ = {
@@ -290,6 +361,7 @@
 		};
 		22ED506D20BFE1C100FF4FF1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50FD849023AA35B50D983403 /* Pods-Lottoy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -309,6 +381,7 @@
 		};
 		22ED506E20BFE1C100FF4FF1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FFE81642F866938506A66388 /* Pods-Lottoy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
