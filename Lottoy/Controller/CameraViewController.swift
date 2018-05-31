@@ -9,12 +9,14 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class CameraViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    @IBOutlet weak var messageBar: UILabel!
+    @IBOutlet weak var background: UIImageView!
+    @IBOutlet weak var goToMenu: UIButton!
     var captureSession = AVCaptureSession()
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
+    var qrSource: String?
     
 
     override func viewDidLoad() {
@@ -53,7 +55,8 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         captureSession.startRunning()
         
-        view.bringSubview(toFront: messageBar)
+        view.bringSubview(toFront: background)
+        view.bringSubview(toFront: goToMenu)
         
         qrCodeFrameView = UIView()
         
@@ -67,16 +70,22 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        captureSession.startRunning()
+        qrCodeFrameView?.frame = CGRect.zero
+        qrSource = nil
+    }
+  
 
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageBar.text = "no QR"
             return
         }
         
@@ -84,12 +93,20 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
         if metadataObj.type == AVMetadataObject.ObjectType.qr {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
-            if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue)
-                messageBar.text = metadataObj.stringValue
+            if let _ = metadataObj.stringValue {
+                qrSource = metadataObj.stringValue
+                captureSession.stopRunning()
+                performSegue(withIdentifier: "goToHistory", sender: self)
             }
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToHistory" {
+            let destinationVC = segue.destination as! HistoryViewController
+            destinationVC.QRSourcePassedOver = qrSource
+        }
     }
 
 }
