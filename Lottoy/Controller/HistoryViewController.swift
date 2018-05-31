@@ -7,21 +7,68 @@
 //
 
 import UIKit
+import SwiftyJSON
+import Alamofire
+import RealmSwift
 
 class HistoryViewController: UITableViewController {
 
     var QRSourcePassedOver : String?
+    let realm = try! Realm()
+    var lottoContainer : Results<Lottoes>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(QRSourcePassedOver as Any)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        tableView.rowHeight = 80
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if QRSourcePassedOver != nil {
+            print(QRSourcePassedOver as Any)
+            let str = QRSourcePassedOver?.components(separatedBy: "/?v=")
+            
+            
+            
+            do {
+                try self.realm.write {
+                    if (str![0] == "http://qr.645lotto.net"){
+                        
+                        let numbers = str![1].components(separatedBy: "q")
+                        for i in 1..<numbers.count{
+                            let newItem = Lottoes()
+                            newItem.name = "Lotto 6/45"
+                            newItem.round = numbers[0]
+                            newItem.num1 = String(numbers[i].prefix(2))
+                            newItem.num2 = String((numbers[i].prefix(4)).suffix(2))
+                            newItem.num3 = String((numbers[i].prefix(6)).suffix(2))
+                            newItem.num4 = String((numbers[i].prefix(8)).suffix(2))
+                            newItem.num5 = String((numbers[i].prefix(10)).suffix(2))
+                            newItem.num6 = String((numbers[i].prefix(12)).suffix(2))
+                            self.realm.add(newItem)
+                        }
+                        
+                        
+                        
+                    }else if (str![0] == "http://qr.nlotto.co.kr"){
+                        let newItem = Lottoes()
+                        newItem.name = "연금복권"
+                        newItem.round = String(str![1].prefix(str![1].count - 8).suffix(4))
+                        newItem.bonus = "\(String(str![1].suffix(8).prefix(1))) 조"
+                        newItem.num1 = String(str![1].suffix(8).prefix(3).suffix(1))
+                        newItem.num2 = String(str![1].suffix(8).prefix(4).suffix(1))
+                        newItem.num3 = String(str![1].suffix(8).prefix(5).suffix(1))
+                        newItem.num4 = String(str![1].suffix(8).prefix(6).suffix(1))
+                        newItem.num5 = String(str![1].suffix(8).prefix(7).suffix(1))
+                        newItem.num6 = String(str![1].suffix(8).prefix(8).suffix(1))
+                        self.realm.add(newItem)
+                    }
+                }
+            }catch {
+                print("error saving data \(error)")
+            }
+        }
+        
+        loadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,68 +76,38 @@ class HistoryViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return lottoContainer!.count
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath)
-
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! LottoCell
+        cell.name.text = lottoContainer![indexPath.row].name
+        cell.round.text = "제 \(lottoContainer![indexPath.row].round) 회"
+        cell.num1.text = lottoContainer![indexPath.row].num1
+        cell.num2.text = lottoContainer![indexPath.row].num2
+        cell.num3.text = lottoContainer![indexPath.row].num3
+        cell.num4.text = lottoContainer![indexPath.row].num4
+        cell.num5.text = lottoContainer![indexPath.row].num5
+        cell.num6.text = lottoContainer![indexPath.row].num6
+        
+        if (cell.name.text == "Lotto 6/45") {
+            cell.bonus.isHidden = true
+        }else {
+            cell.bonus.isHidden = false
+        }
+        
         return cell
     }
  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func loadData() {
+        lottoContainer = realm.objects(Lottoes.self).sorted(byKeyPath: "date", ascending: false)
+        
+        tableView.reloadData()
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

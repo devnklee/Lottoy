@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2267765E20C0297600CC3168 /* LottoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2267765D20C0297600CC3168 /* LottoCell.swift */; };
 		227222FC20BFFEBB00DD2D0A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227222FB20BFFEBB00DD2D0A /* HistoryViewController.swift */; };
+		22E5903620C01B0D00E29CA6 /* Lottoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E5903520C01B0D00E29CA6 /* Lottoes.swift */; };
 		22ED505E20BFE1BF00FF4FF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED505D20BFE1BF00FF4FF1 /* AppDelegate.swift */; };
 		22ED506020BFE1BF00FF4FF1 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ED505F20BFE1BF00FF4FF1 /* CameraViewController.swift */; };
 		22ED506320BFE1BF00FF4FF1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22ED506120BFE1BF00FF4FF1 /* Main.storyboard */; };
@@ -17,7 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2267765D20C0297600CC3168 /* LottoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoCell.swift; sourceTree = "<group>"; };
 		227222FB20BFFEBB00DD2D0A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		22E5903520C01B0D00E29CA6 /* Lottoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottoes.swift; sourceTree = "<group>"; };
 		22ED505A20BFE1BF00FF4FF1 /* Lottoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22ED505D20BFE1BF00FF4FF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22ED505F20BFE1BF00FF4FF1 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +54,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2267765C20C0295D00CC3168 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2267765D20C0297600CC3168 /* LottoCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		227222FA20BFFE9600DD2D0A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +69,15 @@
 				227222FB20BFFEBB00DD2D0A /* HistoryViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		22E5903420C01AEF00E29CA6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				22E5903520C01B0D00E29CA6 /* Lottoes.swift */,
+				22ED506120BFE1BF00FF4FF1 /* Main.storyboard */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		22ED505120BFE1BF00FF4FF1 = {
@@ -81,8 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				22ED505D20BFE1BF00FF4FF1 /* AppDelegate.swift */,
+				22E5903420C01AEF00E29CA6 /* Model */,
 				227222FA20BFFE9600DD2D0A /* Controller */,
-				22ED506120BFE1BF00FF4FF1 /* Main.storyboard */,
+				2267765C20C0295D00CC3168 /* View */,
 				22ED506420BFE1C100FF4FF1 /* Assets.xcassets */,
 				22ED506620BFE1C100FF4FF1 /* LaunchScreen.storyboard */,
 				22ED506920BFE1C100FF4FF1 /* Info.plist */,
@@ -219,7 +241,9 @@
 			files = (
 				227222FC20BFFEBB00DD2D0A /* HistoryViewController.swift in Sources */,
 				22ED506020BFE1BF00FF4FF1 /* CameraViewController.swift in Sources */,
+				22E5903620C01B0D00E29CA6 /* Lottoes.swift in Sources */,
 				22ED505E20BFE1BF00FF4FF1 /* AppDelegate.swift in Sources */,
+				2267765E20C0297600CC3168 /* LottoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
