@@ -12,7 +12,8 @@ import RealmSwift
 class Lottoes: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var round: String = ""
-    @objc dynamic var head: String = ""
+    @objc dynamic var isdone: Bool = false
+    @objc dynamic var win: String = ""
     @objc dynamic var num1: String = ""
     @objc dynamic var num2: String = ""
     @objc dynamic var num3: String = ""
