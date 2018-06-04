@@ -21,16 +21,17 @@ class HistoryViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 80
 
+        //if qrcode is taken, add qr information to history
         if QRSourcePassedOver != nil {
             addLottoToDB()
         }
-    
+        
         loadData()
     }
     
+    //there are two differnt lotto in korea, so there are two diffrent qr source information
     func addLottoToDB() {
         let str = QRSourcePassedOver?.components(separatedBy: "/?v=")
-        
         
         do {
             try self.realm.write {
@@ -96,6 +97,11 @@ class HistoryViewController: UITableViewController {
         cell.num4.text = lottoContainer![indexPath.row].num4
         cell.num5.text = lottoContainer![indexPath.row].num5
         cell.num6.text = lottoContainer![indexPath.row].num6
+        if (lottoContainer![indexPath.row].win == "") {
+            
+        }else {
+        cell.win.text = "당첨금 - \(lottoContainer![indexPath.row].win)"
+        }
         
         if (cell.name.text == "Lotto 6/45") {
             cell.bonus.isHidden = true
