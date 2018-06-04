@@ -41,12 +41,12 @@ class HistoryViewController: UITableViewController {
                         let newItem = Lottoes()
                         newItem.name = "Lotto 6/45"
                         newItem.round = numbers[0]
-                        newItem.num1 = String(numbers[i].prefix(2))
-                        newItem.num2 = String((numbers[i].prefix(4)).suffix(2))
-                        newItem.num3 = String((numbers[i].prefix(6)).suffix(2))
-                        newItem.num4 = String((numbers[i].prefix(8)).suffix(2))
-                        newItem.num5 = String((numbers[i].prefix(10)).suffix(2))
-                        newItem.num6 = String((numbers[i].prefix(12)).suffix(2))
+                        newItem.num1 = String(numbers[numbers.count - i].prefix(2))
+                        newItem.num2 = String((numbers[numbers.count - i].prefix(4)).suffix(2))
+                        newItem.num3 = String((numbers[numbers.count - i].prefix(6)).suffix(2))
+                        newItem.num4 = String((numbers[numbers.count - i].prefix(8)).suffix(2))
+                        newItem.num5 = String((numbers[numbers.count - i].prefix(10)).suffix(2))
+                        newItem.num6 = String((numbers[numbers.count - i].prefix(12)).suffix(2))
                         self.realm.add(newItem)
                     }
                     
