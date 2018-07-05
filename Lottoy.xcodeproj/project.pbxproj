@@ -20,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		2267765D20C0297600CC3168 /* LottoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottoCell.swift; sourceTree = "<group>"; };
+		226E512B20EDB13200FD8CCE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		227222FB20BFFEBB00DD2D0A /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		22E5903520C01B0D00E29CA6 /* Lottoes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lottoes.swift; sourceTree = "<group>"; };
 		22ED505A20BFE1BF00FF4FF1 /* Lottoy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lottoy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +109,7 @@
 				22ED506420BFE1C100FF4FF1 /* Assets.xcassets */,
 				22ED506620BFE1C100FF4FF1 /* LaunchScreen.storyboard */,
 				22ED506920BFE1C100FF4FF1 /* Info.plist */,
+				226E512B20EDB13200FD8CCE /* README.md */,
 			);
 			path = Lottoy;
 			sourceTree = "<group>";
